@@ -1,0 +1,14 @@
+__pycache__
+.DS_Store
+
+.status
+add_urls
+del_urls
+unfinished_urls
+update
+
+url
+html
+content
+
+test
