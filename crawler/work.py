@@ -4,7 +4,8 @@ from .service import Update
 from .service import UnfinishedUrls
 from .parser import ParseForum
 from .parser import ParseTopic
-from .util import dateToYMD
+from .util import urlRequests
+from .util import timeToYMDHM
 
 from os import makedirs
 from time import sleep
@@ -14,8 +15,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
 
-import requests
-
 def topicUrlCrawler(path_url, item, length, id_ = 0):
 
 	forum, url = item
@@ -24,27 +23,27 @@ def topicUrlCrawler(path_url, item, length, id_ = 0):
 	
 		try:
 
-			parser = ParseTopic(requests.get(first_url).text)
+			parser = ParseTopic(urlRequests(first_url))
 
 			pages = parser.getPages()
 
-			if pages > 1: parser = ParseTopic(requests.get("{}/page/{}".format(first_url, pages)).text)
+			if pages > 1: 
 
-			time = parser.getContent(["Time"]).split("\n")[-1]
+				parser = ParseTopic(urlRequests("{}/page/{}".format(first_url, pages)))
 
-			date, _, _ = time.split()
+			time = parser.getContent(["Time"], ["Content"]).split("\n")[-1]
 
-			date = dateToYMD(date)
-
-			return Update().isUpdated(date)
+			return Update().isUpdated(timeToYMDHM(time))
 		
 		except Exception as e:
 
-			print(e)
+			# print(e)
 
 			return False
 
 	def work():
+
+		Status().write("{:<{}s} | ".format(forum, length), id_)
 
 		try:
 
@@ -82,7 +81,7 @@ def topicUrlCrawler(path_url, item, length, id_ = 0):
 
 				UnfinishedUrls().addUrls(urls)
 
-				Status().write("{:<{}s} Page: {}".format(forum, length, num), id_)
+				Status().write("{:<{}s} | Page: {}".format(forum, length, num), id_)
 
 				# Next Page
 
@@ -105,7 +104,7 @@ def topicUrlCrawler(path_url, item, length, id_ = 0):
 
 		except Exception as e:
 
-			print(e)
+			# print(e)
 			
 			return False
 
@@ -114,8 +113,8 @@ def topicUrlCrawler(path_url, item, length, id_ = 0):
 		return True
 
 	while not work(): 
+		
 		print("{:<{}s} Restart!!".format(forum, length))
-		sleep(5)
 
 	print("{:<{}s} Finished.".format(forum, length))
 
@@ -129,12 +128,11 @@ def topicHtmlCrawler(path_html, path_content, items, id_ = 0):
 
 			forum, url = item
 
-			parser = ParseTopic(requests.get(url).text)
+			parser = ParseTopic(urlRequests(url))
 
-			date, _, _ = parser.getContent(["Time"]).split("\n")[0].split()
-			date = dateToYMD(date)
+			time = parser.getContent(["Time"], ["Content"]).split("\n")[0]
 			code = url.split("/")[-1]
-			topic = "{}_{}.txt".format(date, code)
+			topic = "{}_{}.txt".format(timeToYMDHM(time).split()[0], code)
 
 			makedirs("{}/{}".format(path_html, forum), exist_ok = True)
 
@@ -145,8 +143,8 @@ def topicHtmlCrawler(path_html, path_content, items, id_ = 0):
 				f.write(str(parser))
 		
 				for page in range(2, parser.getPages() + 1):
-					f.write("\n")
-					f.write(str(ParseTopic(requests.get("{}/page/{}".format(url, page)).text)))
+					parser = ParseTopic(urlRequests("{}/page/{}".format(url, page)))
+					f.write("\n{}".format(str(parser)))
 
 			topicHtmlToContent(path_html, path_content, forum, topic)
 
@@ -154,7 +152,9 @@ def topicHtmlCrawler(path_html, path_content, items, id_ = 0):
 		
 		except Exception as e:
 
-			print("\n{}\n{}\n{}".format(e, forum, url))
+			# print(e)
+
+			print(url)
 
 		Status().write("[{:>{}d} / {}] {}"
 			.format(i, len(str(len(items))), len(items), topic), id_)
@@ -173,18 +173,20 @@ def topicHtmlToContent(path_html, path_content, forum, topic):
 	topic_url     = parser[0].getUrl()
 	topic_title   = parser[0].getContent(["Title"]).split("\n")[0]
 	topic_product = parser[0].getContent(["Product"]).split("\n")[0]
-	topic_solved  = parser[0].getContent(["Solved"])
+	topic_os      = parser[0].getContent(["Os"]).split("\n")[0]
+	topic_solved  = parser[0].getContent(["Solved"])[:7]
 
-	topic_time_first = dateToYMD(parser[0].
-		getContent(["Time"], ["Content"]).split("\n")[0].split()[0])
-	topic_time_last  = dateToYMD(parser[-1].
-		getContent(["Time"], ["Content"]).split("\n")[-1].split()[0])
+	topic_time_first = timeToYMDHM(parser[ 0].getContent(["Time"], ["Content"]).split("\n")[ 0])
+	topic_time_last  = timeToYMDHM(parser[-1].getContent(["Time"], ["Content"]).split("\n")[-1])
 
-	topic_product = "`Does Not Exist`" if topic_product == "" else topic_product[len("Product: "):]
+	topic_product = "`No Product`" if topic_product == "" else topic_product[len("Product: "):]
+
+	topic_os = "`No Operating System`" if topic_os == "" else topic_os[len("Operating System: "):]
 
 	with open(file_content, "w") as f:
 
-		f.write("{}\n{}\n{}\n".format(topic_url, topic_title, topic_product))
+		f.write("{}\n{}\n".format(topic_url, topic_title))
+		f.write("{}\n{}\n".format(topic_product, topic_os))
 		f.write("{}\n{}\n".format(topic_time_first, topic_time_last))
 
 		if topic_solved: f.write("{}\n".format(topic_solved))

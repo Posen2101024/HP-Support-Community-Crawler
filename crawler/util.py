@@ -1,6 +1,8 @@
 
 from os import listdir, makedirs
 
+import requests
+
 def getForumUrl(path_forum):
 
 	with open(path_forum, "r") as f:
@@ -43,10 +45,20 @@ def getTopicHtml(path_html):
 
 	return data
 
-def dateToYMD(date):
+def urlRequests(url):
 
-	date = date.split("-")
+	return requests.get(url, timeout = 60).text
 
-	date = "{}-{}-{}".format(date[2], date[0], date[1])
+def timeToYMDHM(time):
+
+	date, time, meridiem = time.split()
+
+	date = [int(num) for num in date.split("-")]
+
+	time = [int(num) for num in time.split(":")]
+
+	if meridiem == "PM" and time[0]  < 12: time[0] += 12
+	if meridiem == "AM" and time[0] == 12: time[0] -= 12
 	
-	return date
+	return "{:04d}-{:02d}-{:02d} {:02d}:{:02d}".format(
+		date[2], date[0], date[1], time[0], time[1])

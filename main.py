@@ -29,7 +29,7 @@ def main(args):
 
 	if args.content:
 
-		topicHtmlToContentProcess(path_html, path_content, num_workers = 8)
+		topicHtmlToContentProcess(path_html, path_content, num_workers = 4)
 
 if __name__ == "__main__":
 
