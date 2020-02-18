@@ -93,7 +93,7 @@ def topicUrlCrawler(path_url, item, length, id_ = 0):
 				next_page = next_page[0]
 
 				browser.execute_script("arguments[0].scrollIntoView(false);", next_page)
-				browser.execute_script("window.scrollBy(0, 100)")
+				browser.execute_script("window.scrollBy(0, 200)")
 
 				sleep(1)
 
