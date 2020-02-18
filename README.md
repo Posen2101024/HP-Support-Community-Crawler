@@ -8,9 +8,8 @@
     ```
 
 - Download [Chromedriver](https://chromedriver.chromium.org/downloads)
-    - [chromedriver_linux64](https://chromedriver.storage.googleapis.com/78.0.3904.105/chromedriver_linux64.zip)
-    - [chromedriver_mac64](https://chromedriver.storage.googleapis.com/78.0.3904.105/chromedriver_mac64.zip)
-    - [chromedriver_win32](https://chromedriver.storage.googleapis.com/78.0.3904.105/chromedriver_win32.zip)
+    - [Chrome version 80](https://chromedriver.storage.googleapis.com/index.html?path=80.0.3987.106/)
+    - [Chrome version 78](https://chromedriver.storage.googleapis.com/index.html?path=78.0.3904.105/)
 
 ## Update
 
