@@ -1,6 +1,8 @@
 
 cd $(dirname "$0")
 
+touch .status
+
 while :; do
 
 	clear
