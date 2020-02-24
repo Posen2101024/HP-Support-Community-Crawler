@@ -8,8 +8,16 @@
     ```
 
 - Download [Chromedriver](https://chromedriver.chromium.org/downloads)
-    - [Chrome version 80](https://chromedriver.storage.googleapis.com/index.html?path=80.0.3987.106/)
-    - [Chrome version 78](https://chromedriver.storage.googleapis.com/index.html?path=78.0.3904.105/)
+
+    - Chrome version 80
+        ```
+        sh chromedriver.sh 80.0.3987.106
+        ```
+        
+    - Chrome version 78
+        ```
+        sh chromedriver.sh 78.0.3904.105
+        ```
 
 ## Update
 
@@ -33,8 +41,8 @@
 HP/
 │
 ├── crawler/                 # Crawler Package
+│   ├── chromedriver/
 │   ├── __init__.py
-│   ├── chromedriver         # Your Chromedriver
 │   ├── multiple.py
 │   ├── parser.py
 │   ├── service.py

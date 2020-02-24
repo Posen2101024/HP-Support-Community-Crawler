@@ -15,6 +15,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
 
+import platform
+
 def topicUrlCrawler(path_url, item, length, id_ = 0):
 
 	forum, url = item
@@ -56,7 +58,13 @@ def topicUrlCrawler(path_url, item, length, id_ = 0):
 			chrome_options.add_argument("--disable-gpu")
 			chrome_options.add_argument("blink-settings=imagesEnabled=false")
 			
-			browser = webdriver.Chrome("./crawler/chromedriver", chrome_options = chrome_options)
+			chromedriver = "./crawler/chromedriver/{}".format({
+				"Linux":   "Linux/chromedriver", 
+				"Darwin":  "Mac/chromedriver", 
+				"Windows": "Windows/chromedriver.exe"
+			}[platform.system()])
+
+			browser = webdriver.Chrome(chromedriver, chrome_options = chrome_options)
 
 			browser.get(url)
 
