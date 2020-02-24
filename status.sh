@@ -7,7 +7,7 @@ while :; do
 
 	clear
 
-	echo "$(date)"
+	printf "$(date)\n"
 
 	cat .status; 
 

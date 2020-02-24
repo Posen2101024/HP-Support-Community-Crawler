@@ -9,25 +9,21 @@ cd $(dirname "$0")
 
 for model in ${models[*]}; do
 
-	echo ${model}
+	printf "\n${model}\n"
 
 	python3 main.py ${model} --url
-
-	echo
 
 done
 
 for times in $(seq 1 3); do
 
-	echo "------------------------------\n"
+	printf "\n%s\n" "------------------------------"
 
 	for model in ${models[*]}; do
 
-		echo ${model}
+		printf "\n${model}\n"
 
 		python3 main.py ${model} --html
-
-		echo
 
 	done
 
