@@ -7,7 +7,7 @@ __pycache__/
 Thumbs.db
 
 model/*/*/
-crawler/chromedriver/
+crawler/chromedriver/*/*
 
 .status
 
@@ -15,3 +15,5 @@ test/
 *.zip
 *.png
 *.gif
+
+!.gitkeep
