@@ -19,6 +19,10 @@
         sh chromedriver.sh 78.0.3904.105
         ```
 
+- Download Model
+
+    - [2020/03/01](https://drive.google.com/open?id=1TWUEKeAIz76PRGrEexPseGP4Bg1AEQJL)
+
 ## Update
 
 - Update
