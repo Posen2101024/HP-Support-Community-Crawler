@@ -1,5 +1,11 @@
 # HP Support Community
 
+HP support community discussions on https://h30434.www3.hp.com .
+
+## Model
+
+- [2020/04/01](https://drive.google.com/open?id=1HGOq-NnWCD8XLeCg314odPval4lrYAuq)
+
 ## Initialize
 
 - Requirements
@@ -18,10 +24,6 @@
         ```
         sh chromedriver.sh 78.0.3904.105
         ```
-
-- Download Model
-
-    - [2020/04/01](https://drive.google.com/open?id=1HGOq-NnWCD8XLeCg314odPval4lrYAuq)
 
 ## Update
 
