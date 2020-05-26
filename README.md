@@ -2,47 +2,44 @@
 
 HP support community discussions on https://h30434.www3.hp.com .
 
-## Model
-
-- [2020/04/01](https://drive.google.com/open?id=1HGOq-NnWCD8XLeCg314odPval4lrYAuq)
-
 ## Initialize
-
-- Requirements
-    ```
-    pip3 install -r requirements.txt
-    ```
 
 - Download [Chromedriver](https://chromedriver.chromium.org/downloads)
 
-    - Chrome version 80
+    - Chrome version 83
+
         ```
-        sh chromedriver.sh 80.0.3987.106
+        sh download/chromedriver.sh 83.0.4103.39
         ```
-        
-    - Chrome version 78
-        ```
-        sh chromedriver.sh 78.0.3904.105
-        ```
+
+- Download Model
+
+    ```
+    sh download/model.sh
+    ```
 
 ## Update
 
 - Update
+
     ```
     sh update.sh
     ```
     
 - Update **Notebooks**
+
     ```
     sh update.sh Notebooks
     ```
     
-- Watch update status
+- Update status
+
     ```
     sh status.sh
     ```
 
 ## Directory Layout
+
 ```
 HP/
 │
@@ -55,10 +52,14 @@ HP/
 │   ├── util.py
 │   └── work.py
 │
-├── model/                   # Data
+├── download/
+│   ├── chromedriver.sh
+│   └── model.sh
+│
+├── model/                   # Dataset
 │   ├── Desktops/
 │   ├── Gaming/
-│   ├── Notebooks/           # Notebooks Data
+│   ├── Notebooks/           # Notebooks Dataset
 │   │   ├── url/             # Topics Url
 │   │   ├── html/            # Topics Html
 │   │   ├── content/         # Topics Content
@@ -69,11 +70,9 @@ HP/
 │
 ├── update.py
 │
-├── update.sh                # Update Topics
+├── update.sh
 │
-├── status.sh                # Watch Work Status
-│
-├── requirements.txt
+├── status.sh
 │
 └── README.md
 ```
