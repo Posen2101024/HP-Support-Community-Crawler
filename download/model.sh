@@ -10,4 +10,4 @@ download() {
 	unzip -o model.zip && rm model.zip
 }
 
-download "1bqsYpbFe9BqDaxi67VBPo6wjRs8s37pZ"
+download "1-e0MIuw2q1qSsLvL9Y0LAAMM1SdF6gvg"
