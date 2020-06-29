@@ -8,35 +8,25 @@ HP support community discussions on https://h30434.www3.hp.com .
 
     - Chrome version 83
 
-        ```
-        sh download/chromedriver.sh 83.0.4103.39
-        ```
+        ***run*** `sh download/chromedriver.sh 83.0.4103.39`
 
 - Download Model
 
-    ```
-    sh download/model.sh
-    ```
+    ***run*** `sh download/model.sh`
 
 ## Update
 
 - Update
 
-    ```
-    sh update.sh
-    ```
+    ***run*** `sh update.sh`
     
 - Update **Notebooks**
 
-    ```
-    sh update.sh Notebooks
-    ```
+    ***run*** `sh update.sh Notebooks`
     
 - Update status
 
-    ```
-    sh status.sh
-    ```
+    ***run*** `sh status.sh`
 
 ## Directory Layout
 
