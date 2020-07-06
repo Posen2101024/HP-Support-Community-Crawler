@@ -59,9 +59,7 @@ def topicUrlCrawler(path_url, item, length, id_ = 0):
 			chrome_options.add_argument("blink-settings=imagesEnabled=false")
 			
 			chromedriver = "./crawler/chromedriver/{}".format({
-				"Linux":   "Linux/chromedriver", 
-				"Darwin":  "Mac/chromedriver", 
-				"Windows": "Windows/chromedriver.exe"
+				"Linux": "Linux/chromedriver", "Darwin": "Mac/chromedriver"
 			}[platform.system()])
 
 			browser = webdriver.Chrome(chromedriver, chrome_options = chrome_options)

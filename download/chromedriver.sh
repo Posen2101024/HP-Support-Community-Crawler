@@ -18,9 +18,3 @@ wget https://chromedriver.storage.googleapis.com/${version}/chromedriver_mac64.z
 unzip -o chromedriver_mac64.zip &&\
 rm chromedriver_mac64.zip &&\
 mv chromedriver ../crawler/chromedriver/Mac
-
-mkdir -p ../crawler/chromedriver/Windows &&\
-wget https://chromedriver.storage.googleapis.com/${version}/chromedriver_win32.zip &&\
-unzip -o chromedriver_win32.zip &&\
-rm chromedriver_win32.zip &&\
-mv chromedriver.exe ../crawler/chromedriver/Windows
