@@ -6,9 +6,9 @@ HP support community discussions on https://h30434.www3.hp.com .
 
 - Download [Chromedriver](https://chromedriver.chromium.org/downloads)
 
-    - Chrome version 83
+    - Chrome version 84
 
-        ***run*** `sh download/chromedriver.sh 83.0.4103.39`
+        ***run*** `sh download/chromedriver.sh 84.0.4147.30`
 
 - Download Model
 
