@@ -57,6 +57,7 @@ def topicUrlCrawler(path_url, item, length, id_ = 0):
 			chrome_options.add_argument("--headless")
 			chrome_options.add_argument("--disable-gpu")
 			chrome_options.add_argument("blink-settings=imagesEnabled=false")
+			chrome_options.add_argument("--window-size=4000,1600")
 			
 			chromedriver = "./crawler/chromedriver/{}".format({
 				"Linux": "Linux/chromedriver", "Darwin": "Mac/chromedriver"
