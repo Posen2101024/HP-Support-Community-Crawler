@@ -1,6 +1,6 @@
 
 if [ "$#" == "0" ]; then
-	version=86.0.4240.22
+	version=87.0.4280.20
 else
 	version=${1}
 fi
