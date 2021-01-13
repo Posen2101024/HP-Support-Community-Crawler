@@ -12,7 +12,7 @@ __pycache__/
 # Model
 *.zip*
 model/*/*/
-crawler/chromedriver/
+chromedriver
 
 # Log
 .status

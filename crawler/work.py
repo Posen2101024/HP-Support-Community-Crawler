@@ -15,8 +15,6 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
 
-import platform
-
 def topicUrlCrawler(path_url, item, length, id_ = 0):
 
 	forum, url = item
@@ -59,9 +57,7 @@ def topicUrlCrawler(path_url, item, length, id_ = 0):
 			chrome_options.add_argument("blink-settings=imagesEnabled=false")
 			chrome_options.add_argument("--window-size=4000,1600")
 			
-			chromedriver = "./crawler/chromedriver/{}".format({
-				"Linux": "Linux/chromedriver", "Darwin": "Mac/chromedriver"
-			}[platform.system()])
+			chromedriver = "./chromedriver"
 
 			browser = webdriver.Chrome(chromedriver, chrome_options = chrome_options)
 

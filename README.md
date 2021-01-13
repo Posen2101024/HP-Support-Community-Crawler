@@ -6,13 +6,11 @@ HP support community discussions on https://h30434.www3.hp.com .
 
 - Download [Chromedriver](https://chromedriver.chromium.org/downloads)
 
-    - Chrome version 84
-
-        ***run*** `sh download/chromedriver.sh 84.0.4147.30`
+	***run*** `mv chromedriver HP-Support-Community-Crawler/chromedriver`
 
 - Download Model
 
-    ***run*** `sh download/model.sh`
+    ***run*** `sh download.sh`
 
 ## Update
 
@@ -24,7 +22,7 @@ HP support community discussions on https://h30434.www3.hp.com .
 
     ***run*** `sh update.sh Notebooks`
     
-- Update status
+- Current status
 
     ***run*** `sh status.sh`
 
@@ -34,17 +32,12 @@ HP support community discussions on https://h30434.www3.hp.com .
 HP/
 │
 ├── crawler/                 # Crawler Package
-│   ├── chromedriver/
 │   ├── __init__.py
 │   ├── multiple.py
 │   ├── parser.py
 │   ├── service.py
 │   ├── util.py
 │   └── work.py
-│
-├── download/
-│   ├── chromedriver.sh
-│   └── model.sh
 │
 ├── model/                   # Dataset
 │   ├── Desktops/
@@ -58,7 +51,11 @@ HP/
 │   ├── Software/
 │   └── Tablets/
 │
-├── update.py
+├── requirements.txt
+│
+├── main.py
+│
+├── download.sh
 │
 ├── update.sh
 │
